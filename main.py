@@ -1,5 +1,6 @@
 from http_requests import get_request, post_request, put_request, delete_request
 
+
 def main():
     print("Starting the process...\n")
 
@@ -22,7 +23,7 @@ def main():
 
     # Step 3: Update the new user
     print("Updating the new user...")
-    put_request(new_user_id)
+    put_request()
 
     # Step 4: Delete the new user
     print("Deleting the new user...")
@@ -30,5 +31,5 @@ def main():
 
     print("\nProcess completed.")
 
-if name == "main":
+if __name__ == "__main__":
     main()

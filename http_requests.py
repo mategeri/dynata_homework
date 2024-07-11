@@ -3,7 +3,8 @@ from constants import BASE_URL
 from data import user_data
 
 def get_request():
-    response = requests.get(BASE_URL)
+    url = BASE_URL
+    response = requests.get(url)
 
     if response.status_code == 200:
         users = response.json()
@@ -27,22 +28,18 @@ def post_request():
         print("\nHiba történt a POST kérés során: " + str(response.status_code))
         return None
 
-def put_request(user_id):
-    url = f"{BASE_URL}/{user_id}"
-
+def put_request():
+    url = f"{BASE_URL}/1"  # Például fixen beállított érték
     updated_data = {
-        "id": user_id,
+        "id": 1,
         "name": user_data['name'] + "_updated",
         "username": user_data['username'] + "_updated",
         "email": user_data['email'].replace('@', '_updated@')
     }
-
     headers = {
         'Content-type': 'application/json; charset=UTF-8'
     }
-
     response = requests.put(url, json=updated_data, headers=headers)
-
     if response.status_code == 200:
         updated_user = response.json()
         print("\nFelhasználó frissítve:")
